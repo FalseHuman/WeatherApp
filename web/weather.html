@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Погода</title>
+        <link rel="stylesheet" href="weather.css">
+        <script src='eel.js'></script>
+        <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href ="https://www.flaticon.com/svg/static/icons/svg/979/979585.svg">
+        <meta name="theme-color" content="#563d7c">
+    </head>
+    <body class="text-center">
+        <form class="form-signin" onsubmit="return false">
+            <img class="mb-4" src="https://www.flaticon.com/svg/static/icons/svg/979/979585.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Погода онлайн</h1>
+            <input type ="text" id="location" class="form-control" placeholder="Введите город и страну...">
+            <button id="show" class="btn btn-lg btn-primary btn-block">Узнать</button>
+            <div id="info"></div>
+            <p class="mt-5 mb-3 text-muted">&copy;2020</p>
+          </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            async  function display_weather(){
+                let city = document.getElementById('location').value;
+                let res = await eel.what_weather(city) ();
+                document.getElementById('info').innerHTML = res;
+            }
+            jQuery('#show').on('click',function(){
+            //
+            display_weather('info');
+            });
+        </script>
+    </body>
+</html>
